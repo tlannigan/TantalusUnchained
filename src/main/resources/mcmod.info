@@ -1,0 +1,11 @@
+[{
+  "modid": "TantalusUnchained",
+  "name": "Tantalus Unchained",
+  "description": "Minecraft Forge mod derived from Planetary Interactions in EVE Online.",
+  "version": "1.0.0.0",
+  "mcversion": "1.13.2",
+  "logoFile": "assets/examplemod/textures/logo.png",
+  "url": "https://github.com/tlannigan/TantalusUnchained/",
+  "authorList": ["tlannigan","Trakaa","Scheballs"],
+  "credits": "I'd like to thank Jesus, Baby Jesus, and Sweet Cream Butter Jesus."
+}]
