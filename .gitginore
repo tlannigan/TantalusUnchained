@@ -2,6 +2,7 @@
 # intelliJ #
 ############
 .idea
+.iml
 
 ###########
 # eclipse #
