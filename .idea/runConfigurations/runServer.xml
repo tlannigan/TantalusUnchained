@@ -1,0 +1,21 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="runServer" type="Application" factoryName="Application" singleton="false">
+    <envs>
+      <env name="MOD_CLASSES" value="examplemod%%C:\Users\Tristan Lannigan\IdeaProjects\TantalusUnchained\build\resources\main;examplemod%%C:\Users\Tristan Lannigan\IdeaProjects\TantalusUnchained\build\classes\java\main" />
+      <env name="MCP_MAPPINGS" value="snapshot_20180921-1.13" />
+      <env name="MCP_VERSION" value="20190213.203750" />
+      <env name="FORGE_VERSION" value="25.0.85" />
+      <env name="FORGE_GROUP" value="net.minecraftforge" />
+      <env name="target" value="fmluserdevserver" />
+      <env name="MC_VERSION" value="1.13.2" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="net.minecraftforge.userdev.LaunchTesting" />
+    <module name="hamdev.TantalusUnchained.main" />
+    <option name="VM_PARAMETERS" value="-Dforge.logging.console.level=debug -Dforge.logging.markers=SCAN,REGISTRIES,REGISTRYDUMP" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks=":prepareRunServer" externalProjectPath="$PROJECT_DIR$" />
+    </method>
+  </configuration>
+</component>
