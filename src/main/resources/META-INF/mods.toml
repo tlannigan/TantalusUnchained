@@ -27,7 +27,7 @@ description='''
 Minecraft Forge mod derived from Planetary Interactions in EVE Online.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.examplemod]] #optional
+[[dependencies.tantalusunchained]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -39,7 +39,7 @@ Minecraft Forge mod derived from Planetary Interactions in EVE Online.
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
 # Here's another dependency
-[[dependencies.examplemod]]
+[[dependencies.tantalusunchained]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.13.2]"
