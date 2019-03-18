@@ -29,6 +29,7 @@ public class TantalusUnchained
     public TantalusUnchained()
     {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event)
