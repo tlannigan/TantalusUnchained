@@ -1,15 +1,22 @@
 package hamdev.tantalusunchained;
 
+import hamdev.tantalusunchained.proxy.ClientProxy;
+import hamdev.tantalusunchained.proxy.GuiHandler;
+import hamdev.tantalusunchained.proxy.IProxy;
+import hamdev.tantalusunchained.proxy.ServerProxy;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ExtensionPoint;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -29,7 +36,7 @@ public class TantalusUnchained
     private static final Logger LOGGER = LogManager.getLogger();
 
     //unused until proxy files are added - proxy used between client and server "sides"
-    //public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
+    public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
 
     public static ItemGroup creativeTab = new ItemGroup("TantalusUnchained") {
         @Override
@@ -41,22 +48,29 @@ public class TantalusUnchained
     public TantalusUnchained()
     {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        MinecraftForge.EVENT_BUS.register(this);
+
+        ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.GUIFACTORY, () -> GuiHandler::getClientGuiElement);
+
+//        MinecraftForge.EVENT_BUS.register(this);
     }
 
-    @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
-        ModItems.register(event.getRegistry());
-    }
+//    @SubscribeEvent
+//    public static void registerItems(RegistryEvent.Register<Item> event)
+//    {
+//        ModItems.register(event.getRegistry());
+//    }
 
     private void setup(final FMLCommonSetupEvent event)
     {
         LOGGER.info("PreINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
+        proxy.setup(event);
     }
 
     @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
+    public void onServerStarting(FMLServerStartingEvent event)
+    {
         // do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
@@ -64,8 +78,10 @@ public class TantalusUnchained
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
+        public static void onBlocksRegistry(final RegistryEvent.Register<Item> event)
+        {
             // register a new block here
+            ModItems.register(event.getRegistry());
             LOGGER.info("HELLO from Register Block");
         }
     }
