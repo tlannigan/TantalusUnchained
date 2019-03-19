@@ -22,6 +22,10 @@ public class ItemHeavyMetal extends Item
     @Override
     public void addInformation(ItemStack stack, World player, List<ITextComponent> list, ITooltipFlag flag) {
         super.addInformation(stack, player, list, flag);
-        list.add(new TextComponentString("Brent is a slut!"));
+        //Pull from lang file. Need more info here...
+        //ResourceLocation tooltip = new ResourceLocation(TantalusUnchained.MODID, "heavy_metal_description");
+        //list.add(new TextComponentString(tooltip.toString()));
+        list.add(new TextComponentString("Brent is a slut."));
     }
+
 }
