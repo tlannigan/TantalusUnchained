@@ -1,5 +1,6 @@
 package hamdev.tantalusunchained;
 
+import hamdev.tantalusunchained.items.ItemHeavyMetal;
 import hamdev.tantalusunchained.proxy.ClientProxy;
 import hamdev.tantalusunchained.proxy.GuiHandler;
 import hamdev.tantalusunchained.proxy.IProxy;

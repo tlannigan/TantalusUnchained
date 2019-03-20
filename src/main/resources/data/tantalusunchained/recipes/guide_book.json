@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "fff",
+    "fdf",
+    "fff"
+  ],
+  "key": {
+    "f": {
+      "item": "tantalusunchained:technology_fragment"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item":"tantalusunchained:guide_book"
+  }
+}

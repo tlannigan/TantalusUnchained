@@ -5,18 +5,18 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemHeavyMetal extends Item
+public class ItemGuideBook extends Item
 {
-    public ItemHeavyMetal()
+    public ItemGuideBook()
     {
         super(new Properties().group(TantalusUnchained.creativeTab));
-        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "heavy_metal"));
+        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "guide_book"));
     }
 
     @Override
@@ -24,7 +24,6 @@ public class ItemHeavyMetal extends Item
         super.addInformation(stack, player, list, flag);
 
         list.add(new TextComponentString(""));
-        list.add(new TextComponentString("\u00A79Brent is a slut!"));
-        list.add(new TextComponentString("This is how many fucks I give:"));
+        list.add(new TextComponentString("\u00A77\u00A7oA towel is just about the most massively useful thing an interstellar hitchhiker can carry. "));
     }
 }
