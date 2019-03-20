@@ -1,6 +1,7 @@
 package hamdev.tantalusunchained;
 
 import hamdev.tantalusunchained.items.ItemGuideBook;
+import hamdev.tantalusunchained.items.ItemOmniTool;
 import hamdev.tantalusunchained.items.ItemTechnologyFragment;
 import net.minecraft.item.Item;
 import hamdev.tantalusunchained.items.ItemHeavyMetal;
@@ -18,6 +19,7 @@ public class ModItems
         registry.register(new ItemHeavyMetal());
         registry.register(new ItemGuideBook());
         registry.register(new ItemTechnologyFragment());
+        registry.register(new ItemOmniTool());
     }
 
 }

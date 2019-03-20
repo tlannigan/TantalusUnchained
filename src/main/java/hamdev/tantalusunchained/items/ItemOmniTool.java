@@ -11,12 +11,12 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemTechnologyFragment extends Item
+public class ItemOmniTool extends Item
 {
-    public ItemTechnologyFragment()
+    public ItemOmniTool()
     {
         super(new Properties().group(TantalusUnchained.creativeTab));
-        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "technology_fragment"));
+        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "omni_tool"));
     }
 
     @Override
@@ -24,6 +24,6 @@ public class ItemTechnologyFragment extends Item
         super.addInformation(stack, player, list, flag);
 
         list.add(new TextComponentString(""));
-        list.add(new TextComponentString("\u00A77These fragments emit an eerie glow."));
+        list.add(new TextComponentString("\u00A79This tool can handle anything you can throw in the kitchen sink!"));
     }
 }

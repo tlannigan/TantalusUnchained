@@ -1,33 +1,31 @@
 package hamdev.tantalusunchained;
 
-import hamdev.tantalusunchained.items.ItemHeavyMetal;
 import hamdev.tantalusunchained.proxy.ClientProxy;
 import hamdev.tantalusunchained.proxy.GuiHandler;
 import hamdev.tantalusunchained.proxy.IProxy;
 import hamdev.tantalusunchained.proxy.ServerProxy;
-import net.minecraft.block.Block;
+import hamdev.tantalusunchained.worldgen.ResourceDensity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.nbt.INBTBase;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ExtensionPoint;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.stream.Collectors;
+
+import javax.annotation.Nullable;
 
 @Mod(TantalusUnchained.MODID)
 public class TantalusUnchained
@@ -52,19 +50,27 @@ public class TantalusUnchained
 
         ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.GUIFACTORY, () -> GuiHandler::getClientGuiElement);
 
-//        MinecraftForge.EVENT_BUS.register(this);
     }
-
-//    @SubscribeEvent
-//    public static void registerItems(RegistryEvent.Register<Item> event)
-//    {
-//        ModItems.register(event.getRegistry());
-//    }
 
     private void setup(final FMLCommonSetupEvent event)
     {
         LOGGER.info("PreINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
+        CapabilityManager.INSTANCE.register(ResourceDensity.class, new Capability.IStorage<ResourceDensity>()
+        {
+           @Nullable
+           @Override
+           public INBTBase writeNBT(Capability<ResourceDensity> capability, ResourceDensity instance, EnumFacing side)
+           {
+               throw new UnsupportedOperationException();
+           }
+
+           @Override
+           public void readNBT(Capability<ResourceDensity> capability, ResourceDensity instance, EnumFacing side, INBTBase nbt)
+           {
+               throw new UnsupportedOperationException();
+           }
+        }, () -> null);
 
         proxy.setup(event);
     }
