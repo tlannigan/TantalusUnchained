@@ -10,6 +10,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
@@ -63,10 +65,11 @@ public class ItemOmniTool extends Item
         int z = player.getPosition().getZ();
 
         Chunk chunk = world.getChunk(x, z);
-        int chunkX = chunk.getPos().x;
-        int chunkZ = chunk.getPos().z;
+        ChunkPos chunkPos = chunk.getPos();
+
+        int chunkX = chunkPos.x / 16;
+        int chunkZ = chunkPos.z / 16;
 
         double density = helpers.randomGenerator(chunkX, chunkZ, LocalDate.now().getMonthValue(), LocalDate.now().getYear(), 0.5, 2.0);
-        LOGGER.info(density);
     }
 }
