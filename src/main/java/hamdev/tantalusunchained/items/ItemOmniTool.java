@@ -14,11 +14,16 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.time.LocalDate;
 import java.util.List;
 
 public class ItemOmniTool extends Item
 {
+    private static final Logger LOGGER = LogManager.getLogger();
+
     public ItemOmniTool()
     {
         super(new Properties().group(TantalusUnchained.creativeTab));
@@ -61,6 +66,7 @@ public class ItemOmniTool extends Item
         int chunkX = chunk.getPos().x;
         int chunkZ = chunk.getPos().z;
 
-        helpers.randomGenerator(chunkX, chunkZ, LocalDate.now().getMonthValue(), LocalDate.now().getYear(), 0.5, 2.0);
+        double density = helpers.randomGenerator(chunkX, chunkZ, LocalDate.now().getMonthValue(), LocalDate.now().getYear(), 0.5, 2.0);
+        LOGGER.info(density);
     }
 }
