@@ -19,6 +19,7 @@ import net.minecraft.world.chunk.Chunk;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -71,5 +72,6 @@ public class ItemOmniTool extends Item
         int chunkZ = chunkPos.z / 16;
 
         double density = helpers.randomGenerator(chunkX, chunkZ, LocalDate.now().getMonthValue(), LocalDate.now().getYear(), 0.5, 2.0);
+        player.sendMessage(new TextComponentString("Scan complete: Region reveals a density of " + (int) (density * 100) + "%."));
     }
 }
