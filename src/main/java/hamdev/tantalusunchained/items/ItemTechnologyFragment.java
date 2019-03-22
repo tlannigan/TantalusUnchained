@@ -20,7 +20,8 @@ public class ItemTechnologyFragment extends Item
     }
 
     @Override
-    public void addInformation(ItemStack stack, World player, List<ITextComponent> list, ITooltipFlag flag) {
+    public void addInformation(ItemStack stack, World player, List<ITextComponent> list, ITooltipFlag flag)
+    {
         super.addInformation(stack, player, list, flag);
 
         list.add(new TextComponentString(""));

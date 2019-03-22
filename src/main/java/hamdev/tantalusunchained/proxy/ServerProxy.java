@@ -7,17 +7,20 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 public class ServerProxy implements IProxy
 {
     @Override
-    public void setup(FMLCommonSetupEvent event) {
+    public void setup(FMLCommonSetupEvent event)
+    {
 
     }
 
     @Override
-    public EntityPlayer getClientPlayer() {
+    public EntityPlayer getClientPlayer()
+    {
         throw new IllegalStateException("Can't call this server-side!");
     }
 
     @Override
-    public World getClientWorld() {
+    public World getClientWorld()
+    {
         throw new IllegalStateException("Can't call this server-side!");
     }
 }
