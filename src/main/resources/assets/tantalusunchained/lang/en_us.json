@@ -1,10 +1,25 @@
 {
     "itemGroup.TantalusUnchained": "Tantalus Unchained",
     
-    "item.tantalusunchained.heavy_metal": "\u00A72Heavy Metal",
     "item.tantalusunchained.guide_book": "\u00A72Guide Book",
     "item.tantalusunchained.omni_tool": "\u00A72Omni Tool",
     "item.tantalusunchained.technology_fragment": "\u00A72Technology Fragment",
+
+    "item.tantalusunchained.complex_organism": "\u00A72Complex Organism",
+    "item.tantalusunchained.crystalline_solid": "\u00A72Crystalline Solid",
+    "item.tantalusunchained.hard_water": "\u00A72Hard Water",
+    "item.tantalusunchained.inert_gas": "\u00A72Inert Gas",
+    "item.tantalusunchained.inert_metal": "\u00A72Inert Metal",
+    "item.tantalusunchained.ionized_gas": "\u00A72Ionized Gas",
+    "item.tantalusunchained.liquid_hot_magma": "\u00A72Liquid Hot Magma",
+    "item.tantalusunchained.microbe": "\u00A72Microbe",
+    "item.tantalusunchained.organic_colony": "\u00A72Organic Colony",
+    "item.tantalusunchained.organic_compound": "\u00A72Organic Compound",
+    "item.tantalusunchained.plant_biomatter": "\u00A72Plant Biomatter",
+    "item.tantalusunchained.plasma": "\u00A72Plasma",
+    "item.tantalusunchained.soft_metal": "\u00A72Soft Metal",
+    "item.tantalusunchained.toxic_metal": "\u00A72Toxic Metal",
+    "item.tantalusunchained.unstable_gas": "\u00A72Unstable Gas",
 
     "block.tantalusunchained.block_test": "Test"
 }

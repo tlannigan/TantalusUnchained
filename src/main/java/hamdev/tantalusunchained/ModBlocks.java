@@ -17,5 +17,6 @@ public class ModBlocks {
 
     public static void registerItems(IForgeRegistry<Item> registry) {
         registry.register(itemBlockTest);
+
     }
 }
