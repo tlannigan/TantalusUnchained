@@ -19,6 +19,7 @@ public class ModBlocks {
 
     public static void registerItemBlocks(IForgeRegistry<Item> registry) {
         registry.register(itemBlockTest);
+
     }
 
     public static void registerTileEntities(IForgeRegistry<TileEntityType<?>> registry) {

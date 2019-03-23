@@ -11,9 +11,9 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemOrganicColony extends Item
+public class ItemPhytoplankton extends Item
 {
-    public ItemOrganicColony()
+    public ItemPhytoplankton()
     {
         super(new Item.Properties().group(TantalusUnchained.creativeTab));
         setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "organic_colony"));
