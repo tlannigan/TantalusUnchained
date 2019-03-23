@@ -25,7 +25,7 @@ public class ModItems
         registry.register(new ItemIonizedGas());
         registry.register(new ItemLiquidHotMagma());
         registry.register(new ItemMicrobe());
-        registry.register(new ItemOrganicColony());
+        registry.register(new ItemPhytoplankton());
         registry.register(new ItemOrganicCompound());
         registry.register(new ItemPlantBiomatter());
         registry.register(new ItemPlasma());
