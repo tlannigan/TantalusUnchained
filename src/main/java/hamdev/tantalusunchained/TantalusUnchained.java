@@ -33,7 +33,7 @@ public class TantalusUnchained
         @Override
         public ItemStack createIcon()
         {
-            return new ItemStack(ModItems.itemHeavyMetal);
+            return new ItemStack(ModItems.itemToxicMetal);
         }
     };
 
