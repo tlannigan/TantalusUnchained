@@ -9,7 +9,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModBlocks {
     public static final Block blockTest = new BlockTest();
-    public static final ItemBlock itemBlockTest = new ItemBlockTest(blockTest, new Item.Properties().group(TantalusUnchained.creativeTab));
+    public static final ItemBlock itemBlockTest = new ItemBlockTest(blockTest);
 
     public static void registerBlocks(IForgeRegistry<Block> registry) {
         registry.register(blockTest);

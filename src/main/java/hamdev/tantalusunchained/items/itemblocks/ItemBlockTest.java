@@ -13,8 +13,8 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class ItemBlockTest extends ItemBlock {
-    public ItemBlockTest(Block block, Item.Properties properties) {
-        super(block, properties);
+    public ItemBlockTest(Block block) {
+        super(block, new Item.Properties().group(TantalusUnchained.creativeTab));
         setRegistryName(TantalusUnchained.MODID, "block_test");
     }
 
