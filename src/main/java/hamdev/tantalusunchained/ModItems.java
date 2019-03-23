@@ -4,7 +4,7 @@ import hamdev.tantalusunchained.items.ItemGuideBook;
 import hamdev.tantalusunchained.items.ItemOmniTool;
 import hamdev.tantalusunchained.items.ItemTechnologyFragment;
 import net.minecraft.item.Item;
-import hamdev.tantalusunchained.items.ItemHeavyMetal;
+import hamdev.tantalusunchained.items.p0_resources.ItemHeavyMetal;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.ObjectHolder;
 
