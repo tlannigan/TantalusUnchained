@@ -4,6 +4,7 @@ import hamdev.tantalusunchained.proxy.ClientProxy;
 import hamdev.tantalusunchained.proxy.GuiHandler;
 import hamdev.tantalusunchained.proxy.IProxy;
 import hamdev.tantalusunchained.proxy.ServerProxy;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -61,10 +62,17 @@ public class TantalusUnchained
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Item> event)
+        public static void onItemsRegistry(final RegistryEvent.Register<Item> event)
         {
-            // register a new block here
-            ModItems.register(event.getRegistry());
+            // register a new item here
+            ModItems.registerItems(event.getRegistry());
+            ModBlocks.registerItems(event.getRegistry());
+            LOGGER.info("HELLO from Register Item");
+        }
+        @SubscribeEvent
+        public static void onBlocksRegistry(final RegistryEvent.Register<Block> event)
+        {
+            ModBlocks.registerBlocks(event.getRegistry());
             LOGGER.info("HELLO from Register Block");
         }
     }

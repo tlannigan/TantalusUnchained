@@ -14,7 +14,7 @@ public class ModItems
     @ObjectHolder("tantalusunchained:toxic_metal")
     public static ItemToxicMetal itemToxicMetal;
 
-    public static void register(IForgeRegistry<Item> registry)
+    public static void registerItems(IForgeRegistry<Item> registry)
     {
         // P0 Resources
         registry.register(new ItemComplexOrganism());
@@ -34,7 +34,6 @@ public class ModItems
         registry.register(new ItemUnstableGas());
 
         // P1 Resources
-
         registry.register(new ItemGuideBook());
         registry.register(new ItemTechnologyFragment());
         registry.register(new ItemOmniTool());
