@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -66,7 +67,7 @@ public class TantalusUnchained
         {
             // register a new item here
             ModItems.registerItems(event.getRegistry());
-            ModBlocks.registerItems(event.getRegistry());
+            ModBlocks.registerItemBlocks(event.getRegistry());
             LOGGER.info("HELLO from Register Item");
         }
         @SubscribeEvent
@@ -74,6 +75,11 @@ public class TantalusUnchained
         {
             ModBlocks.registerBlocks(event.getRegistry());
             LOGGER.info("HELLO from Register Block");
+        }
+        @SubscribeEvent
+        public static void onTilesRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
+            //ModBlocks.registerTileEntities(event.getRegistry());
+            LOGGER.info("HELLO from Register Tile");
         }
     }
 }

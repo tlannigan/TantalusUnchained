@@ -9,7 +9,7 @@ public class BlockTest extends Block {
 
     public BlockTest() {
         super(Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0f));
-        setRegistryName(TantalusUnchained.MODID, "block_test");
+        setRegistryName(TantalusUnchained.MODID, "test");
     }
 
 }
