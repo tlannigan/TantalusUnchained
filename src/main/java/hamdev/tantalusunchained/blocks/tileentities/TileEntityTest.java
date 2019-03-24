@@ -2,6 +2,7 @@ package hamdev.tantalusunchained.blocks.tileentities;
 
 import hamdev.tantalusunchained.ModBlocks;
 import hamdev.tantalusunchained.TantalusUnchained;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ITickable;

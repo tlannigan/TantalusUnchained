@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 public class TantalusUnchained
 {
     public static final String MODID = "tantalusunchained";
-    private static final Logger LOGGER = LogManager.getLogger();
+//    private static final Logger LOGGER = LogManager.getLogger();
     public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
 
     public static ItemGroup creativeTab = new ItemGroup("TantalusUnchained")
@@ -49,7 +49,6 @@ public class TantalusUnchained
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        LOGGER.info("PreINIT");
         proxy.setup(event);
     }
 
@@ -57,7 +56,6 @@ public class TantalusUnchained
     public void onServerStarting(FMLServerStartingEvent event)
     {
         // do something when the server starts
-        LOGGER.info("HELLO from server starting");
     }
 
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
@@ -65,21 +63,17 @@ public class TantalusUnchained
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event)
         {
-            // register a new item here
             ModItems.registerItems(event.getRegistry());
             ModBlocks.registerItemBlocks(event.getRegistry());
-            LOGGER.info("HELLO from Register Item");
         }
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> event)
         {
             ModBlocks.registerBlocks(event.getRegistry());
-            LOGGER.info("HELLO from Register Block");
         }
         @SubscribeEvent
         public static void onTilesRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
             ModBlocks.registerTileEntities(event.getRegistry());
-            LOGGER.info("HELLO from Register Tile");
         }
     }
 }

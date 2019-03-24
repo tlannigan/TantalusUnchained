@@ -10,7 +10,8 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class ModBlocks {
+public class ModBlocks
+{
     public static final Block blockTest = new BlockTest();
     public static final ItemBlock itemBlockTest = new ItemBlockTest(blockTest);
 
@@ -26,8 +27,8 @@ public class ModBlocks {
         registry.register(itemBlockTest);
     }
 
-    public static void registerTileEntities(IForgeRegistry<TileEntityType<?>> registry) {
-        //registry.register(TileEntityTest.TestType);
+    public static void registerTileEntities(IForgeRegistry<TileEntityType<?>> registry)
+    {
         registry.register(TYPE_TEST = TileEntityType.Builder.create(TileEntityTest::new).build(null).setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "block_test")));
     }
 }
