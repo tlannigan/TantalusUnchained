@@ -78,7 +78,7 @@ public class TantalusUnchained
         }
         @SubscribeEvent
         public static void onTilesRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
-            //ModBlocks.registerTileEntities(event.getRegistry());
+            ModBlocks.registerTileEntities(event.getRegistry());
             LOGGER.info("HELLO from Register Tile");
         }
     }
