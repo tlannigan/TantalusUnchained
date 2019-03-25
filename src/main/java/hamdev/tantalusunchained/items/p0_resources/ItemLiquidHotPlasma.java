@@ -11,12 +11,12 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemToxicMetal extends Item
+public class ItemLiquidHotPlasma extends Item
 {
-    public ItemToxicMetal()
+    public ItemLiquidHotPlasma()
     {
         super(new Item.Properties().group(TantalusUnchained.creativeTab));
-        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "toxic_metal"));
+        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "liquid_hot_plasma"));
     }
 
     @Override

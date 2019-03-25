@@ -16,7 +16,7 @@ public class ItemPhytoplankton extends Item
     public ItemPhytoplankton()
     {
         super(new Item.Properties().group(TantalusUnchained.creativeTab));
-        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "organic_colony"));
+        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "phytoplankton"));
     }
 
     @Override

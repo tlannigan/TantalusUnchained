@@ -11,12 +11,12 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemPlasma extends Item
+public class ItemRareMetal extends Item
 {
-    public ItemPlasma()
+    public ItemRareMetal()
     {
         super(new Item.Properties().group(TantalusUnchained.creativeTab));
-        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "plasma"));
+        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "rare_metal"));
     }
 
     @Override

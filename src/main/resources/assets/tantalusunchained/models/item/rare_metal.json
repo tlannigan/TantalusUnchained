@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "tantalusunchained:items/toxic_metal"
+    "layer0": "tantalusunchained:items/rare_metal"
   }
 }

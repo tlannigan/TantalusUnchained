@@ -11,8 +11,8 @@ import net.minecraftforge.registries.ObjectHolder;
 public class ModItems
 {
 
-    @ObjectHolder("tantalusunchained:toxic_metal")
-    public static ItemToxicMetal itemToxicMetal;
+    @ObjectHolder("tantalusunchained:dense_metal")
+    public static ItemDenseMetal itemDenseMetal;
 
     public static void registerItems(IForgeRegistry<Item> registry)
     {
@@ -21,16 +21,16 @@ public class ModItems
         registry.register(new ItemCrystallineSolid());
         registry.register(new ItemHardWater());
         registry.register(new ItemInertGas());
-        registry.register(new ItemInertMetal());
+        registry.register(new ItemRareMetal());
         registry.register(new ItemIonizedGas());
         registry.register(new ItemLiquidHotMagma());
         registry.register(new ItemMicrobe());
         registry.register(new ItemPhytoplankton());
         registry.register(new ItemOrganicCompound());
         registry.register(new ItemPlantBiomatter());
-        registry.register(new ItemPlasma());
+        registry.register(new ItemLiquidHotPlasma());
         registry.register(new ItemSoftMetal());
-        registry.register(new ItemToxicMetal());
+        registry.register(new ItemDenseMetal());
         registry.register(new ItemUnstableGas());
 
         // P1 Resources

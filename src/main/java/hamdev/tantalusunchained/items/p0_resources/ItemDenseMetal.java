@@ -11,12 +11,12 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemInertMetal extends Item
+public class ItemDenseMetal extends Item
 {
-    public ItemInertMetal()
+    public ItemDenseMetal()
     {
         super(new Item.Properties().group(TantalusUnchained.creativeTab));
-        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "inert_metal"));
+        setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "dense_metal"));
     }
 
     @Override
