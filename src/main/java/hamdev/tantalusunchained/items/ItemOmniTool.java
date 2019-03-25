@@ -6,12 +6,14 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,12 +38,46 @@ public class ItemOmniTool extends Item
         list.add(new TextComponentString("\u00A79This tool can handle anything you can throw in the kitchen sink!"));
     }
 
+    public ResourceType getResource(ItemStack stack)
+    {
+        if (!stack.hasTag())
+        {
+            return ResourceType.HARD_WATER;
+        }
+        return ResourceType.values()[stack.getTag().getInt("resource")];
+    }
+
+    public void toggleResource(EntityPlayer player, ItemStack stack)
+    {
+        ResourceType resource = getResource(stack);
+        if(resource == ResourceType.UNSTABLE_GAS)
+        {
+            resource = ResourceType.HARD_WATER;
+        }
+        else
+        {
+            resource = getResource(stack);
+        }
+
+        player.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "Scanning for: " + resource.name()), false);
+
+        if (!stack.hasTag())
+        {
+            stack.setTag(new NBTTagCompound());
+        }
+
+        stack.getTag().setInt("resource", stack.getTag().getInt("resource") + 1);
+    }
+
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
     {
         if (player.isSneaking())
         {
-            return null;
+            if(!world.isRemote)
+            {
+                toggleResource(player, player.getHeldItem(hand));
+            }
         }
         else
         {

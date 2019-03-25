@@ -1,21 +1,22 @@
 package hamdev.tantalusunchained.blocks;
 
 import hamdev.tantalusunchained.TantalusUnchained;
-import hamdev.tantalusunchained.blocks.tileentities.TileEntityTest;
+import hamdev.tantalusunchained.blocks.tileentities.TileExtractor;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockReader;
+
 import javax.annotation.Nullable;
 
-public class BlockTest extends Block /*implements ITileEntityProvider*/
+public class BlockExtractor extends Block
 {
-    public BlockTest()
+    public BlockExtractor()
     {
-        super(Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0f));
-        setRegistryName(TantalusUnchained.MODID, "block_test");
+        super(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(2.0f));
+        setRegistryName(TantalusUnchained.MODID, "block_extractor");
     }
 
     @Override
@@ -28,6 +29,6 @@ public class BlockTest extends Block /*implements ITileEntityProvider*/
     @Nullable
     public TileEntity createTileEntity(IBlockState state, IBlockReader world)
     {
-        return new TileEntityTest();
+        return new TileExtractor();
     }
 }
