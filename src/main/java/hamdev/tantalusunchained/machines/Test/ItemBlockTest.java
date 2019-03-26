@@ -1,4 +1,4 @@
-package hamdev.tantalusunchained.items.itemblocks;
+package hamdev.tantalusunchained.machines.Test;
 
 import hamdev.tantalusunchained.TantalusUnchained;
 import net.minecraft.block.Block;
@@ -12,11 +12,10 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemBlockResourceHarvester extends ItemBlock
-{
-    public ItemBlockResourceHarvester(Block block) {
+public class ItemBlockTest extends ItemBlock {
+    public ItemBlockTest(Block block) {
         super(block, new Item.Properties().group(TantalusUnchained.creativeTab));
-        setRegistryName(TantalusUnchained.MODID, "block_resource_harvester");
+        setRegistryName(TantalusUnchained.MODID, "block_test");
     }
 
     @Override

@@ -29,7 +29,7 @@ public class ModItems
         registry.register(new ItemOrganicCompound());
         registry.register(new ItemPlantBiomatter());
         registry.register(new ItemLiquidHotPlasma());
-        registry.register(new ItemSoftMetal());
+        registry.register(new ItemCommonMetal());
         registry.register(new ItemDenseMetal());
         registry.register(new ItemUnstableGas());
 

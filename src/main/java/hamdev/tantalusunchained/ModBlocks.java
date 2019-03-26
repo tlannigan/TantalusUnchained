@@ -1,11 +1,11 @@
 package hamdev.tantalusunchained;
 
-import hamdev.tantalusunchained.blocks.BlockResourceHarvester;
-import hamdev.tantalusunchained.blocks.BlockTest;
-import hamdev.tantalusunchained.blocks.tileentities.TileEntityTest;
-import hamdev.tantalusunchained.blocks.tileentities.TileResourceHarvester;
-import hamdev.tantalusunchained.items.itemblocks.ItemBlockResourceHarvester;
-import hamdev.tantalusunchained.items.itemblocks.ItemBlockTest;
+import hamdev.tantalusunchained.machines.ResourceHarvester.BlockResourceHarvester;
+import hamdev.tantalusunchained.machines.Test.BlockTest;
+import hamdev.tantalusunchained.machines.Test.TileEntityTest;
+import hamdev.tantalusunchained.machines.ResourceHarvester.TileResourceHarvester;
+import hamdev.tantalusunchained.machines.ResourceHarvester.ItemBlockResourceHarvester;
+import hamdev.tantalusunchained.machines.Test.ItemBlockTest;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;

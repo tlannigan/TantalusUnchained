@@ -1,7 +1,6 @@
-package hamdev.tantalusunchained.blocks;
+package hamdev.tantalusunchained.machines.ResourceHarvester;
 
 import hamdev.tantalusunchained.TantalusUnchained;
-import hamdev.tantalusunchained.blocks.tileentities.TileResourceHarvester;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
