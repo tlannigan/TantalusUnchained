@@ -6,11 +6,11 @@ import net.minecraft.util.ITickable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class TileExtractor extends TileEntity implements ITickable
+public class TileResourceHarvester extends TileEntity implements ITickable
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public TileExtractor()
+    public TileResourceHarvester()
     {
         super(ModBlocks.TYPE_TEST);
     }

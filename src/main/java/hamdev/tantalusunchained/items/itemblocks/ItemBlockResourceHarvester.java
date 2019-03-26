@@ -12,11 +12,11 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemBlockExtractor extends ItemBlock
+public class ItemBlockResourceHarvester extends ItemBlock
 {
-    public ItemBlockExtractor(Block block) {
+    public ItemBlockResourceHarvester(Block block) {
         super(block, new Item.Properties().group(TantalusUnchained.creativeTab));
-        setRegistryName(TantalusUnchained.MODID, "block_extractor");
+        setRegistryName(TantalusUnchained.MODID, "block_resource_harvester");
     }
 
     @Override
