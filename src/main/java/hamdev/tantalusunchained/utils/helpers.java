@@ -10,20 +10,8 @@ import static net.minecraft.util.math.MathHelper.floor;
 public class helpers {
     public static double randomGenerator(int resourceModifier, double chunkX, double chunkZ, double min, double max)
     {
-        Random generator = new Random(floor(chunkX / 16));
-        int passOne = generator.nextInt();
-
-        generator = new Random(floor(chunkZ / 16));
-        int passTwo = generator.nextInt();
-
-        generator = new Random((int)Math.pow(LocalDate.now().getYear() - 2000, LocalDate.now().getMonthValue()));
-        int passThree = generator.nextInt();
-
-        generator = new Random(resourceModifier);
-        int passFour = generator.nextInt();
-
-        int finalSeed = passOne + (passTwo * passThree) + passFour;
-        generator = new Random(finalSeed);
+        String finalSeed = floor(chunkX / 16) + "" + floor(chunkZ / 16) + "" + LocalDate.now().getYear() + "" + LocalDate.now().getMonthValue();
+        Random generator = new Random((resourceModifier + 1) * Integer.parseInt(finalSeed));
 
         return min + (max - min) * generator.nextDouble();
     }
