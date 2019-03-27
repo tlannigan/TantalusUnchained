@@ -16,11 +16,11 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ModBlocks
 {
     public static TileEntityType<?> TYPE_TEST;
-
     public static final Block blockTest = new BlockTest();
-    public static final Block blockResourceHarvester = new BlockResourceHarvester();
-
     public static final ItemBlock itemBlockTest = new ItemBlockTest(blockTest);
+
+    public static TileEntityType<?> TYPE_RESOURCE_HARVESTER;
+    public static final Block blockResourceHarvester = new BlockResourceHarvester();
     public static final ItemBlock itemBlockResourceHarvester = new ItemBlockResourceHarvester(blockResourceHarvester);
 
 
@@ -39,6 +39,6 @@ public class ModBlocks
     public static void registerTileEntities(IForgeRegistry<TileEntityType<?>> registry)
     {
         registry.register(TYPE_TEST = TileEntityType.Builder.create(TileEntityTest::new).build(null).setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "block_test")));
-        registry.register(TYPE_TEST = TileEntityType.Builder.create(TileResourceHarvester::new).build(null).setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "block_resource_harvester")));
+        registry.register(TYPE_RESOURCE_HARVESTER = TileEntityType.Builder.create(TileResourceHarvester::new).build(null).setRegistryName(new ResourceLocation(TantalusUnchained.MODID, "block_resource_harvester")));
     }
 }
