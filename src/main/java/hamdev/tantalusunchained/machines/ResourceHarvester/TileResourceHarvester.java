@@ -2,7 +2,6 @@ package hamdev.tantalusunchained.machines.ResourceHarvester;
 
 import hamdev.tantalusunchained.ModBlocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import org.apache.logging.log4j.LogManager;
@@ -18,6 +17,8 @@ public class TileResourceHarvester extends TileEntity implements ITickable
     }
 
     private Integer tickIterator;
+    private NBTTagCompound dateNBTData;
+    private String[] dateArray;
 
     @Override
     public void tick()
@@ -29,7 +30,7 @@ public class TileResourceHarvester extends TileEntity implements ITickable
                 outputResource();
             }
             tickIterator ++;
-            LOGGER.info("Ticking away");
+            //LOGGER.info("Ticking away");
         }
     }
 
@@ -38,14 +39,16 @@ public class TileResourceHarvester extends TileEntity implements ITickable
 
     }
 
-    //@Override
-    //public void deserializeNBT(NBTTagCompound nbt) {
+    public NBTTagCompound writeNBTData()
+    {
+        //THIS IS AN EXAMPLE, MOFOS
+        dateNBTData.setString("DateArray", "3/26/19 21:40,3/26/19 22:45,3/26/19 22:50,3/26/19 22:55,3/26/19 23:00");
+        return dateNBTData;
+    }
 
-    //}
+    public void readNBTData(NBTTagCompound dateNBTData)
+    {
+        dateArray = dateNBTData.getString("DateArray").split(",");
+    }
 
-    //@Override
-    //public NBTTagCompound serializeNBT() {
-
-        //  return ;
-    //}
 }
