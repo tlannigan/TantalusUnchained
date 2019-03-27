@@ -6,7 +6,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.text.ITextComponent;
@@ -15,7 +15,6 @@ import net.minecraft.world.IInteractionObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import javax.annotation.Nullable;
-import java.util.function.BiFunction;
 
 public class TileResourceHarvester extends TileEntity implements ITickable, IGuiTile, IInteractionObject
 {
@@ -26,12 +25,21 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
         super(ModBlocks.TYPE_RESOURCE_HARVESTER);
     }
 
+    private Integer tickIterator;
+    private NBTTagCompound dateNBTData;
+    private String[] dateArray;
+
     @Override
     public void tick()
     {
         if(!world.isRemote)
         {
-
+            if (tickIterator >= 6000) {
+                tickIterator = 0;
+                outputResource();
+            }
+            tickIterator ++;
+            //LOGGER.info("Ticking away");
         }
     }
 
@@ -77,5 +85,23 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
     public ITextComponent getCustomName()
     {
         return null;
+    }
+
+    private void outputResource()
+    {
+        //Logic for NBT shit
+
+    }
+
+    public NBTTagCompound writeNBTData()
+    {
+        //THIS IS AN EXAMPLE, MOFOS
+        dateNBTData.setString("DateArray", "3/26/19 21:40,3/26/19 22:45,3/26/19 22:50,3/26/19 22:55,3/26/19 23:00");
+        return dateNBTData;
+    }
+
+    public void readNBTData(NBTTagCompound dateNBTData)
+    {
+        dateArray = dateNBTData.getString("DateArray").split(",");
     }
 }
