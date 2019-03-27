@@ -32,15 +32,15 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
     @Override
     public void tick()
     {
-        if(!world.isRemote)
-        {
-            if (tickIterator >= 6000) {
-                tickIterator = 0;
-                outputResource();
-            }
-            tickIterator ++;
-            //LOGGER.info("Ticking away");
-        }
+//        if(!world.isRemote)
+//        {
+//            if (tickIterator >= 6000) {
+//                tickIterator = 0;
+//                outputResource();
+//            }
+//            tickIterator ++;
+//            //LOGGER.info("Ticking away");
+//        }
     }
 
     public boolean canInteractWith(EntityPlayer playerIn)
@@ -51,14 +51,12 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
     @Override
     public GuiContainer createGui(EntityPlayer player)
     {
-        LOGGER.info("I'm trying to createGui, Captain!");
         return new GuiResourceHarvester(this, new ContainerResourceHarvester(player.inventory, this));
     }
 
     @Override
     public Container createContainer(InventoryPlayer inventoryPlayer, EntityPlayer player)
     {
-        LOGGER.info("I'm trying to createContainer, Captain!");
         return new ContainerResourceHarvester(inventoryPlayer, this);
     }
 

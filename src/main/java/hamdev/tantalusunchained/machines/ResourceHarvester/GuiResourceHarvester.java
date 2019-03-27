@@ -29,7 +29,6 @@ public class GuiResourceHarvester extends GuiContainer
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {
-        LOGGER.info("I'm trying to drawGui, Captain!");
         mc.getTextureManager().bindTexture(background);
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
     }
@@ -37,7 +36,6 @@ public class GuiResourceHarvester extends GuiContainer
     @Override
     public void render(int mouseX, int mouseY, float partialTicks)
     {
-        LOGGER.info("I'm trying to render, Captain!");
         drawDefaultBackground();
         super.render(mouseX, mouseY, partialTicks);
         renderHoveredToolTip(mouseX, mouseY);
