@@ -3,11 +3,9 @@ package hamdev.tantalusunchained.machines.ResourceHarvester;
 import hamdev.tantalusunchained.TantalusUnchained;
 import hamdev.tantalusunchained.tools.ResourceButton;
 import hamdev.tantalusunchained.tools.SelectorButton;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiLabel;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.inventory.ClickType;
-import net.minecraft.inventory.Slot;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,11 +26,16 @@ public class GuiResourceHarvester extends GuiContainer
     private static String[] resources;
     private static int curResource = 0;
 
+    public String getTexture() {
+        return texture;
+    }
+
     private static String texture = "common_metal";
 
     private static ResourceLocation renderedResource = new ResourceLocation(TantalusUnchained.MODID,"textures/items/" + texture + ".png");
 
     private ResourceButton resButton;
+
     private SelectorButton selectMinus;
     private SelectorButton selectPlus;
 
@@ -65,9 +68,9 @@ public class GuiResourceHarvester extends GuiContainer
     {
         super.initGui();
 
-        this.resButton = this.addButton(new ResourceButton(1, guiLeft + 50, guiTop + 20, 16, 16, "", this));
+        this.resButton = this.addButton(new ResourceButton(1, guiLeft + 25, guiTop + 20, 16, 16, "", this));
 
-        this.selectMinus = this.addButton(new SelectorButton(2, guiLeft + 50 - 20, guiTop + 20, 16, 16, "<", this)
+        this.selectMinus = this.addButton(new SelectorButton(2, guiLeft + 25 - 20, guiTop + 20, 16, 16, "<", this)
         {
             public void onClick(double mouseX, double mouseY)
             {
@@ -88,7 +91,7 @@ public class GuiResourceHarvester extends GuiContainer
             }
         });
 
-        this.selectPlus = this.addButton(new SelectorButton(3, guiLeft + 50 + 20, guiTop + 20, 16, 16, ">", this)
+        this.selectPlus = this.addButton(new SelectorButton(3, guiLeft + 25 + 20, guiTop + 20, 16, 16, ">", this)
         {
             public void onClick(double mouseX, double mouseY)
             {
@@ -114,7 +117,15 @@ public class GuiResourceHarvester extends GuiContainer
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {
         mc.getTextureManager().bindTexture(background);
+
         drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+    }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+    {
+        super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+        drawString(fontRenderer, texture, 10, 10, 16777215);
     }
 
     @Override
@@ -123,26 +134,6 @@ public class GuiResourceHarvester extends GuiContainer
         drawDefaultBackground();
         super.render(mouseX, mouseY, partialTicks);
         renderHoveredToolTip(mouseX, mouseY);
-    }
-
-    public String[] getResources()
-    {
-        return resources;
-    }
-
-    public void setResources(String[] resources)
-    {
-        GuiResourceHarvester.resources = resources;
-    }
-
-    public int getCurResource()
-    {
-        return curResource;
-    }
-
-    public void setCurResource(int curResource)
-    {
-        GuiResourceHarvester.curResource = curResource;
     }
 
     public static ResourceLocation getRenderedResource()

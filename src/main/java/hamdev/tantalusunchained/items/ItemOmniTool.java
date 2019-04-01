@@ -41,7 +41,7 @@ public class ItemOmniTool extends Item
     {
         if (player.isSneaking())
         {
-            return null;
+            return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
         }
         else
         {

@@ -1,13 +1,9 @@
 package hamdev.tantalusunchained.tools;
 
-import hamdev.tantalusunchained.TantalusUnchained;
 import hamdev.tantalusunchained.machines.ResourceHarvester.GuiResourceHarvester;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.client.config.GuiButtonExt;
-import net.minecraftforge.fml.client.config.GuiUtils;
 
 public class ResourceButton extends GuiButton
 {
@@ -25,6 +21,7 @@ public class ResourceButton extends GuiButton
     {
         Minecraft mc = Minecraft.getInstance();
         mc.getTextureManager().bindTexture(guiHarvester.getRenderedResource());
+
         drawModalRectWithCustomSizedTexture(this.x, this.y, 0, 0, this.width, this.height, 16, 16);
     }
 
