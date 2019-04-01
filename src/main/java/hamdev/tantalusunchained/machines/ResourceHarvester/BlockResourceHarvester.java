@@ -27,39 +27,27 @@ public class BlockResourceHarvester extends Block
         setRegistryName(TantalusUnchained.MODID, "block_resource_harvester");
     }
 
-//    @Override
-//    public boolean onBlockActivated(IBlockState state, World worldIn, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
-//    {
-//        if(!worldIn.isRemote)
-//        {
-//            TileEntity tileEntity = worldIn.getTileEntity(pos);
-//            if (tileEntity instanceof TileResourceHarvester)
-//            {
-//                ((TileResourceHarvester) tileEntity).createGui(player);
-//            }
-//        }
-//        return super.onBlockActivated(state, worldIn, pos, player, hand, side, hitX, hitY, hitZ);
-//    }
-
     @Override
     public boolean onBlockActivated(IBlockState state, World world, BlockPos pos, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ)
     {
         // Only execute on the server
-        if (world.isRemote) {
+        if (world.isRemote)
+        {
             return true;
         }
+
         TileEntity te = world.getTileEntity(pos);
-        if (!(te instanceof IInteractionObject)) {
+        if (!(te instanceof IInteractionObject))
+        {
             return false;
         }
-        // @todo 1.13
+
         NetworkHooks.openGui((EntityPlayerMP) player, (IInteractionObject)te, buf -> {
             buf.writeInt(te.getPos().getX());
             buf.writeInt(te.getPos().getY());
             buf.writeInt(te.getPos().getZ());
         });
-//        player.displayGui((IInteractionObject) te);
-//        player.openGui(MyMod.instance, 0, world, pos.getX(), pos.getY(), pos.getZ());
+
         return true;
     }
 

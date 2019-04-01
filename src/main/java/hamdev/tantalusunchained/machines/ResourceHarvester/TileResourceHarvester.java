@@ -60,6 +60,24 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
         return new ContainerResourceHarvester(inventoryPlayer, this);
     }
 
+    private void outputResource()
+    {
+        //Logic for NBT shit
+
+    }
+
+    public NBTTagCompound writeNBTData()
+    {
+        //THIS IS AN EXAMPLE, MOFOS
+        dateNBTData.setString("DateArray", "3/26/19 21:40,3/26/19 22:45,3/26/19 22:50,3/26/19 22:55,3/26/19 23:00");
+        return dateNBTData;
+    }
+
+    public void readNBTData(NBTTagCompound dateNBTData)
+    {
+        dateArray = dateNBTData.getString("DateArray").split(",");
+    }
+
     @Override
     public String getGuiID()
     {
@@ -78,28 +96,10 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
         return false;
     }
 
-    @Nullable
     @Override
+    @Nullable
     public ITextComponent getCustomName()
     {
         return null;
-    }
-
-    private void outputResource()
-    {
-        //Logic for NBT shit
-
-    }
-
-    public NBTTagCompound writeNBTData()
-    {
-        //THIS IS AN EXAMPLE, MOFOS
-        dateNBTData.setString("DateArray", "3/26/19 21:40,3/26/19 22:45,3/26/19 22:50,3/26/19 22:55,3/26/19 23:00");
-        return dateNBTData;
-    }
-
-    public void readNBTData(NBTTagCompound dateNBTData)
-    {
-        dateArray = dateNBTData.getString("DateArray").split(",");
     }
 }

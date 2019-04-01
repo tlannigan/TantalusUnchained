@@ -22,7 +22,7 @@ public class helpers {
 
         if(player.world.getDimension().getType().getId() == -1)
         {
-            resources = new String[]{"Soft Metals: ", "Dense Metals: ", "Crystalline Solids: ", "Liquid Hot Magma: ", "Rare Metals: "};
+            resources = new String[]{"Common Metals: ", "Dense Metals: ", "Crystalline Solids: ", "Liquid Hot Magma: ", "Rare Metals: "};
         }
         else if (player.world.getDimension().getType().getId() == 1)
         {
@@ -41,5 +41,10 @@ public class helpers {
             density = randomGenerator(i, x, z, 0.5, 2.0);
             player.sendMessage(new TextComponentString(resources[i] + (int) (density * 100) + "%"));
         }
+    }
+
+    public static void getDimensionResources()
+    {
+
     }
 }
