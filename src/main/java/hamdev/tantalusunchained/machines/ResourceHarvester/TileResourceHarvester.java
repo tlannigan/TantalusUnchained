@@ -20,9 +20,27 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
+    private static String[] resources;
+    private int curResource = 0;
+
     public TileResourceHarvester()
     {
         super(ModBlocks.TYPE_RESOURCE_HARVESTER);
+
+//        int world = this.world.getDimension().getType().getId();
+//        int world = -1;
+//        if (world == -1)
+//        {
+            resources = new String[]{"common_metal", "dense_metal", "crystalline_solid", "liquid_hot_magma", "rare_metal"};
+//        }
+//        else if (world == 1)
+//        {
+//            resources = new String[]{"inert_gas", "ionized_gas", "liquid_hot_plasma", "unstable_gas"};
+//        }
+//        else
+//        {
+//            resources = new String[]{"hard_water", "organic_compound", "plant_fiber", "microbe", "phytoplankton", "complex_organism"};
+//        }
     }
 
     private Integer tickIterator;
@@ -66,6 +84,20 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
 
     }
 
+    @Override
+    public void read(NBTTagCompound compound)
+    {
+        super.read(compound);
+
+    }
+
+    @Override
+    public NBTTagCompound write(NBTTagCompound compound)
+    {
+
+        return super.write(compound);
+    }
+
     public NBTTagCompound writeNBTData()
     {
         //THIS IS AN EXAMPLE, MOFOS
@@ -101,5 +133,21 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
     public ITextComponent getCustomName()
     {
         return null;
+    }
+
+    public String[] getResources() {
+        return resources;
+    }
+
+    public void setResources(String[] resources) {
+        this.resources = resources;
+    }
+
+    public int getCurResource() {
+        return curResource;
+    }
+
+    public void setCurResource(int curResource) {
+        this.curResource = curResource;
     }
 }
