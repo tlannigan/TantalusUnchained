@@ -20,27 +20,12 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private static String[] resources;
+    private String[] resources;
     private int curResource = 0;
 
     public TileResourceHarvester()
     {
         super(ModBlocks.TYPE_RESOURCE_HARVESTER);
-
-//        int world = this.world.getDimension().getType().getId();
-//        int world = -1;
-//        if (world == -1)
-//        {
-            resources = new String[]{"common_metal", "dense_metal", "crystalline_solid", "liquid_hot_magma", "rare_metal"};
-//        }
-//        else if (world == 1)
-//        {
-//            resources = new String[]{"inert_gas", "ionized_gas", "liquid_hot_plasma", "unstable_gas"};
-//        }
-//        else
-//        {
-//            resources = new String[]{"hard_water", "organic_compound", "plant_fiber", "microbe", "phytoplankton", "complex_organism"};
-//        }
     }
 
     private Integer tickIterator;

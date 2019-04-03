@@ -18,13 +18,7 @@ public class GuiResourceHarvester extends GuiContainer
     private static final ResourceLocation background = new ResourceLocation(TantalusUnchained.MODID, "textures/gui/resource_harvester.png");
 
     private TileResourceHarvester tileHarvester;
-
     private String[] resources;
-    //private int curResource = 0;
-
-    public String getTexture() {
-        return texture;
-    }
 
     private static String texture;
     private ResourceLocation renderedResource = new ResourceLocation(TantalusUnchained.MODID,"textures/items/" + texture + ".png");
@@ -40,19 +34,20 @@ public class GuiResourceHarvester extends GuiContainer
 
         tileHarvester = tileEntity;
 
+        if(tileHarvester.hasWorld()) {
+            int world = tileHarvester.getWorld().getDimension().getType().getId();
+            if (world == -1) {
+                tileHarvester.setResources(new String[]{"common_metal", "dense_metal", "crystalline_solid", "liquid_hot_magma", "rare_metal"});
+            } else if (world == 1) {
+                tileHarvester.setResources(new String[]{"inert_gas", "ionized_gas", "liquid_hot_plasma", "unstable_gas"});
+            } else {
+                tileHarvester.setResources(new String[]{"hard_water", "organic_compound", "plant_fiber", "microbe", "phytoplankton", "complex_organism"});
+            }
+        }
+
         resources = tileHarvester.getResources();
         texture = tileHarvester.getResources()[tileHarvester.getCurResource()];
 
-//        if(tileHarvester.hasWorld()) {
-//            int world = tileHarvester.getWorld().getDimension().getType().getId();
-//            if (world == -1) {
-//                tileHarvester.setResources(new String[]{"common_metal", "dense_metal", "crystalline_solid", "liquid_hot_magma", "rare_metal"});
-//            } else if (world == 1) {
-//                tileHarvester.setResources(new String[]{"inert_gas", "ionized_gas", "liquid_hot_plasma", "unstable_gas"});
-//            } else {
-//                tileHarvester.setResources(new String[]{"hard_water", "organic_compound", "plant_fiber", "microbe", "phytoplankton", "complex_organism"});
-//            }
-//        }
     }
 
     @Override
@@ -129,8 +124,8 @@ public class GuiResourceHarvester extends GuiContainer
         renderHoveredToolTip(mouseX, mouseY);
     }
 
-    public ResourceLocation getRenderedResource()
+    public String getTexture()
     {
-        return renderedResource;
+        return texture;
     }
 }
