@@ -5,12 +5,30 @@ import net.minecraft.util.text.TextComponentString;
 import java.time.LocalDate;
 import java.util.Random;
 
+import static net.minecraft.util.math.MathHelper.abs;
 import static net.minecraft.util.math.MathHelper.floor;
 
 public class helpers {
     public static double randomGenerator(int resourceModifier, double chunkX, double chunkZ, double min, double max)
     {
-        String finalSeed = floor(chunkX / 16) + "" + floor(chunkZ / 16) + "" + LocalDate.now().getYear() + "" + LocalDate.now().getMonthValue();
+        int finalX = floor(chunkX / 16);
+        int finalZ = floor(chunkZ / 16);
+        String bitShift = "";
+
+        if(finalX<0&&finalZ<0)
+        {
+            bitShift = "-";
+        }
+        else if(finalX<0 && finalZ>=0)
+        {
+            bitShift = "0";
+        }
+        else if(finalX>=0 && finalZ<0)
+        {
+            bitShift = "1";
+        }
+
+        String finalSeed = bitShift + "" + abs(finalX) + "" + abs(finalZ) + "" + LocalDate.now().getYear() + "" + LocalDate.now().getMonthValue();
         Random generator = new Random((resourceModifier + 1) * Integer.parseInt(finalSeed));
 
         return min + (max - min) * generator.nextDouble();
