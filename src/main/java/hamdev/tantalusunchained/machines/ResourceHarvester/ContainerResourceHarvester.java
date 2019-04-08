@@ -82,7 +82,6 @@ public class ContainerResourceHarvester extends Container implements IHarvesterS
     @Override
     public void sync(int curResource)
     {
-        LOGGER.info("Trying to SYNC");
         this.te.setCurResource(curResource);
     }
 }

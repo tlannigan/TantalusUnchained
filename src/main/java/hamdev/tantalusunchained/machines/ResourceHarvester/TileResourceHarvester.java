@@ -135,7 +135,8 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
     @Override
     public void handleUpdateTag(NBTTagCompound tag)
     {
-        curResource = this.getUpdateTag().getInt("Resource");
+        super.handleUpdateTag(tag);
+        curResource = getUpdateTag().getInt("Resource");
     }
 
     //    public NBTTagCompound writeNBTData()
@@ -181,7 +182,6 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
 
     public void setCurResource(int currentResource)
     {
-        LOGGER.info("Current Resource being set!");
         curResource = currentResource;
     }
 }
