@@ -61,18 +61,6 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
         return !isRemoved() && playerIn.getDistanceSq(pos.add(0.5D, 0.5D, 0.5D)) <= 64D;
     }
 
-    @Override
-    public GuiContainer createGui(EntityPlayer player)
-    {
-        return new GuiResourceHarvester(this, new ContainerResourceHarvester(player.inventory, this));
-    }
-
-    @Override
-    public Container createContainer(InventoryPlayer inventoryPlayer, EntityPlayer player)
-    {
-        return new ContainerResourceHarvester(inventoryPlayer, this);
-    }
-
     private void outputResource()
     {
         //Logic for NBT shit
@@ -83,27 +71,15 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
     public void read(NBTTagCompound compound)
     {
         super.read(compound);
-        readRestorableFromNBT(compound);
         curResource = compound.getInt("Resource");
-    }
-
-    public void readRestorableFromNBT(NBTTagCompound compound)
-    {
-        this.setCurResource(compound.getInt("Resource"));
     }
 
     @Override
     public NBTTagCompound write(NBTTagCompound compound)
     {
         super.write(compound);
-        writeRestorableToNBT(compound);
         compound.setInt("Resource", curResource);
         return compound;
-    }
-
-    public void writeRestorableToNBT(NBTTagCompound compound)
-    {
-        compound.setInt("Resource", this.getCurResource());
     }
 
     @Override
@@ -112,13 +88,6 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
         NBTTagCompound nbtTag = super.getUpdateTag();
         nbtTag.setInt("Resource", curResource);
         return nbtTag;
-    }
-
-    @Nullable
-    @Override
-    public SPacketUpdateTileEntity getUpdatePacket()
-    {
-        return new SPacketUpdateTileEntity(pos, 1, getUpdateTag());
     }
 
     @Override
@@ -150,6 +119,18 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
 //    {
 //        dateArray = dateNBTData.getString("DateArray").split(",");
 //    }
+
+    @Override
+    public Container createContainer(InventoryPlayer inventoryPlayer, EntityPlayer player)
+    {
+        return new ContainerResourceHarvester(inventoryPlayer, this);
+    }
+
+    @Override
+    public GuiContainer createGui(EntityPlayer player)
+    {
+        return new GuiResourceHarvester(this, new ContainerResourceHarvester(player.inventory, this));
+    }
 
     @Override
     public String getGuiID()
