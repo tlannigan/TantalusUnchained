@@ -1,5 +1,6 @@
 package hamdev.tantalusunchained;
 
+import hamdev.tantalusunchained.networking.Messages;
 import hamdev.tantalusunchained.proxy.ClientProxy;
 import hamdev.tantalusunchained.proxy.GuiHandler;
 import hamdev.tantalusunchained.proxy.IProxy;
@@ -45,6 +46,7 @@ public class TantalusUnchained
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        Messages.registerMessages("tantalusunchained");
         proxy.setup(event);
     }
 
@@ -55,7 +57,8 @@ public class TantalusUnchained
     }
 
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
+    public static class RegistryEvents
+    {
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event)
         {
@@ -68,7 +71,8 @@ public class TantalusUnchained
             ModBlocks.registerBlocks(event.getRegistry());
         }
         @SubscribeEvent
-        public static void onTilesRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
+        public static void onTilesRegistry(final RegistryEvent.Register<TileEntityType<?>> event)
+        {
             ModBlocks.registerTileEntities(event.getRegistry());
         }
     }

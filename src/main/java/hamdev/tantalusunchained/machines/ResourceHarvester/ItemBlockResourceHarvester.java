@@ -14,7 +14,8 @@ import java.util.List;
 
 public class ItemBlockResourceHarvester extends ItemBlock
 {
-    public ItemBlockResourceHarvester(Block block) {
+    public ItemBlockResourceHarvester(Block block)
+    {
         super(block, new Item.Properties().group(TantalusUnchained.creativeTab));
         setRegistryName(TantalusUnchained.MODID, "block_resource_harvester");
     }

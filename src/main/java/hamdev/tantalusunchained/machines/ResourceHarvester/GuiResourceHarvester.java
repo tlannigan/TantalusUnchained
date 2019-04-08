@@ -1,12 +1,22 @@
 package hamdev.tantalusunchained.machines.ResourceHarvester;
 
 import hamdev.tantalusunchained.TantalusUnchained;
+import hamdev.tantalusunchained.networking.Messages;
+import hamdev.tantalusunchained.networking.PacketMachineState;
+import hamdev.tantalusunchained.tools.IHarvesterStateContainer;
 import hamdev.tantalusunchained.tools.ResourceButton;
 import hamdev.tantalusunchained.tools.SelectorButton;
+import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.network.NetworkDirection;
+import net.minecraftforge.fml.network.PacketDistributor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import static hamdev.tantalusunchained.networking.Messages.INSTANCE;
 
 public class GuiResourceHarvester extends GuiContainer
 {
@@ -17,12 +27,11 @@ public class GuiResourceHarvester extends GuiContainer
 
     private static final ResourceLocation background = new ResourceLocation(TantalusUnchained.MODID, "textures/gui/resource_harvester.png");
 
-    private TileResourceHarvester tileHarvester;
+    private TileResourceHarvester te;
     private String[] resources;
+    private int curResource;
 
-    private static String texture;
-    private ResourceLocation renderedResource = new ResourceLocation(TantalusUnchained.MODID,"textures/items/" + texture + ".png");
-
+    private String texture;
     private ResourceButton resButton;
 
     public GuiResourceHarvester(TileResourceHarvester tileEntity, ContainerResourceHarvester container)
@@ -32,22 +41,26 @@ public class GuiResourceHarvester extends GuiContainer
         xSize = WIDTH;
         ySize = HEIGHT;
 
-        tileHarvester = tileEntity;
+        te = tileEntity;
 
-        if(tileHarvester.hasWorld()) {
-            int world = tileHarvester.getWorld().getDimension().getType().getId();
-            if (world == -1) {
-                tileHarvester.setResources(new String[]{"common_metal", "dense_metal", "crystalline_solid", "liquid_hot_magma", "rare_metal"});
-            } else if (world == 1) {
-                tileHarvester.setResources(new String[]{"inert_gas", "ionized_gas", "liquid_hot_plasma", "unstable_gas"});
-            } else {
-                tileHarvester.setResources(new String[]{"hard_water", "organic_compound", "plant_fiber", "microbe", "phytoplankton", "complex_organism"});
+        if(te.hasWorld()) {
+            int world = te.getWorld().getDimension().getType().getId();
+            if (world == -1)
+            {
+                resources = new String[]{"common_metal", "dense_metal", "crystalline_solid", "liquid_hot_magma", "rare_metal"};
+            }
+            else if (world == 1)
+            {
+                resources = new String[]{"inert_gas", "ionized_gas", "liquid_hot_plasma", "unstable_gas"};
+            }
+            else
+            {
+                resources = new String[]{"hard_water", "organic_compound", "plant_fiber", "microbe", "phytoplankton", "complex_organism"};
             }
         }
 
-        resources = tileHarvester.getResources();
-        texture = tileHarvester.getResources()[tileHarvester.getCurResource()];
-
+        this.curResource = te.getCurResource();
+        this.texture = resources[curResource];
     }
 
     @Override
@@ -61,19 +74,15 @@ public class GuiResourceHarvester extends GuiContainer
         {
             public void onClick(double mouseX, double mouseY)
             {
-                if (tileHarvester.getCurResource() > 0)
+                if (curResource > 0)
                 {
-                    tileHarvester.setCurResource(tileHarvester.getCurResource() - 1);
-                    texture = resources[tileHarvester.getCurResource()];
-                    renderedResource = new ResourceLocation(TantalusUnchained.MODID,"textures/items/" + texture + ".png");
-                    resButton.reRender(renderedResource);
+                    curResource--;
+                    updateCurResource();
                 }
                 else
                 {
-                    tileHarvester.setCurResource(resources.length - 1);
-                    texture = resources[tileHarvester.getCurResource()];
-                    renderedResource = new ResourceLocation(TantalusUnchained.MODID,"textures/items/" + texture + ".png");
-                    resButton.reRender(renderedResource);
+                    curResource = resources.length - 1;
+                    updateCurResource();
                 }
             }
         });
@@ -82,22 +91,28 @@ public class GuiResourceHarvester extends GuiContainer
         {
             public void onClick(double mouseX, double mouseY)
             {
-                if (tileHarvester.getCurResource() < resources.length - 1)
+                if (curResource < resources.length - 1)
                 {
-                    tileHarvester.setCurResource(tileHarvester.getCurResource() + 1);
-                    texture = resources[tileHarvester.getCurResource()];
-                    renderedResource = new ResourceLocation(TantalusUnchained.MODID,"textures/items/" + texture + ".png");
-                    resButton.reRender(renderedResource);
+                    curResource++;
+                    updateCurResource();
                 }
                 else
                 {
-                    tileHarvester.setCurResource(0);
-                    texture = resources[tileHarvester.getCurResource()];
-                    renderedResource = new ResourceLocation(TantalusUnchained.MODID,"textures/items/" + texture + ".png");
-                    resButton.reRender(renderedResource);
+                    curResource = 0;
+                    updateCurResource();
                 }
             }
         });
+    }
+
+    public void updateCurResource()
+    {
+        texture = resources[curResource];
+        resButton.reRender(new ResourceLocation(TantalusUnchained.MODID, "textures/items/" + texture + ".png"));
+
+        te.setCurResource(curResource);
+        INSTANCE.sendToServer(new PacketMachineState(curResource));
+        te.markDirty();
     }
 
     @Override
