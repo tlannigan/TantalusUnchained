@@ -22,6 +22,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import javax.annotation.Nullable;
 
+import java.util.Date;
+
 import static hamdev.tantalusunchained.networking.Messages.INSTANCE;
 
 public class TileResourceHarvester extends TileEntity implements ITickable, IGuiTile, IInteractionObject
@@ -36,8 +38,7 @@ public class TileResourceHarvester extends TileEntity implements ITickable, IGui
     }
 
     private Integer tickIterator = 0;
-    //private NBTTagCompound dateNBTData;
-    //private String[] dateArray;
+    private String[] dateArray;
 
     @Override
     public void tick()

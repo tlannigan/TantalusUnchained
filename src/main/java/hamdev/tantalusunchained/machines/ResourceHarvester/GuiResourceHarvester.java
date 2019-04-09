@@ -6,13 +6,8 @@ import hamdev.tantalusunchained.networking.PacketMachineState;
 import hamdev.tantalusunchained.tools.IHarvesterStateContainer;
 import hamdev.tantalusunchained.tools.ResourceButton;
 import hamdev.tantalusunchained.tools.SelectorButton;
-import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.inventory.IContainerListener;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.network.NetworkDirection;
-import net.minecraftforge.fml.network.PacketDistributor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,8 +23,12 @@ public class GuiResourceHarvester extends GuiContainer
     private static final ResourceLocation background = new ResourceLocation(TantalusUnchained.MODID, "textures/gui/resource_harvester.png");
 
     private TileResourceHarvester te;
+
     private String[] resources;
     private int curResource;
+
+    private int days = 0;
+    private int hours = 0;
 
     private String texture;
     private ResourceButton resButton;
@@ -70,6 +69,7 @@ public class GuiResourceHarvester extends GuiContainer
 
         this.resButton = this.addButton(new ResourceButton(1, guiLeft + 25, guiTop + 20, 16, 16, "", this));
 
+        // Current Resource backwards
         this.addButton(new SelectorButton(2, guiLeft + 25 - 20, guiTop + 20, 16, 16, "<", this)
         {
             public void onClick(double mouseX, double mouseY)
@@ -87,6 +87,7 @@ public class GuiResourceHarvester extends GuiContainer
             }
         });
 
+        // Current Resource forwards
         this.addButton(new SelectorButton(3, guiLeft + 25 + 20, guiTop + 20, 16, 16, ">", this)
         {
             public void onClick(double mouseX, double mouseY)
@@ -100,6 +101,70 @@ public class GuiResourceHarvester extends GuiContainer
                 {
                     curResource = 0;
                     updateCurResource();
+                }
+            }
+        });
+
+        // Days forward
+        this.addButton(new SelectorButton(4, guiLeft + 70, guiTop + 10, 16, 16, "/\\", this)
+        {
+            public void onClick(double mouseX, double mouseY)
+            {
+                if (days < 7)
+                {
+                    days++;
+                }
+                else
+                {
+                    days = 1;
+                }
+            }
+        });
+
+        // Days backward
+        this.addButton(new SelectorButton(4, guiLeft + 70, guiTop + 30, 16, 16, "\\/", this)
+        {
+            public void onClick(double mouseX, double mouseY)
+            {
+                if (days > 0)
+                {
+                    days--;
+                }
+                else
+                {
+                    days = 7;
+                }
+            }
+        });
+
+        // Hours forwards
+        this.addButton(new SelectorButton(4, guiLeft + 88, guiTop + 10, 16, 16, "/\\", this)
+        {
+            public void onClick(double mouseX, double mouseY)
+            {
+                if (hours < 24)
+                {
+                    hours++;
+                }
+                else
+                {
+                    hours = 0;
+                }
+            }
+        });
+
+        // Hours backwards
+        this.addButton(new SelectorButton(4, guiLeft + 88, guiTop + 30, 16, 16, "\\/", this)
+        {
+            public void onClick(double mouseX, double mouseY)
+            {
+                if (hours > 0)
+                {
+                    hours--;
+                }
+                else
+                {
+                    hours = 24;
                 }
             }
         });
@@ -127,6 +192,8 @@ public class GuiResourceHarvester extends GuiContainer
     {
         super.drawGuiContainerForegroundLayer(mouseX, mouseY);
         this.drawString(fontRenderer, texture, 10, 10, 16777215);
+        this.drawString(fontRenderer, Integer.toString(days), 75, 25, 16777215);
+        this.drawString(fontRenderer, Integer.toString(hours), 90, 25, 16777215);
         this.mc.getTextureManager().bindTexture(new ResourceLocation(TantalusUnchained.MODID, "textures/gui/progress_bar.png"));
         drawModalRectWithCustomSizedTexture(10, 50, 0, 0, 64, 4, 64, 8);
     }
